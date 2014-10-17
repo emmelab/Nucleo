@@ -1,13 +1,13 @@
-class Posicion extends Atributo {
+class Atr_Posicion extends Atributo {
   static String key = "Posicion";
   String getKey() {
     return key;
   }
   Atributo soloPonerNewX() {
-    return new Posicion();
+    return new Atr_Posicion();
   }
   Atributo[] soloPonerNewArray(int tam) {
-    return new Posicion[tam];
+    return new Atr_Posicion[tam];
   }
   //;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   //;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -18,7 +18,7 @@ class Posicion extends Atributo {
     int grillaX = grilla;
     int grillaY = grilla;
     for (int i=0; i<nuevas.length; i++) {
-      Posicion p = (Posicion)nuevas[i];
+      Atr_Posicion p = (Atr_Posicion)nuevas[i];
       p.x = (i%grillaX) * (s.p5.width / grillaX);
       p.y = (i/grillaY) * (s.p5.height / grillaY);
     }

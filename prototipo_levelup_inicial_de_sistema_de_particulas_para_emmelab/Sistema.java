@@ -1,5 +1,6 @@
 import processing.core.PApplet;
 import java.util.HashMap;
+import java.util.ArrayList;
 
 class Sistema {
     ArrayList<Modificador> modificadores= new ArrayList<Modificador>();

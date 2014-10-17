@@ -1,13 +1,13 @@
-class Color extends Atributo{
+class Atr_Color extends Atributo{
   static String key = "Color";
   String getKey() {
     return key;
   }
   Atributo soloPonerNewX() {
-    return new Color();
+    return new Atr_Color();
   }
   Atributo[] soloPonerNewArray(int tam) {
-    return new Color[tam];
+    return new Atr_Color[tam];
   }
   //;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   //;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -16,7 +16,7 @@ class Color extends Atributo{
   
   Atributo[] iniciar(Sistema s, Atributo[] nuevas){
     for(int i=0; i<nuevas.length; i++){
-      Color c=(Color) nuevas[i];
+      Atr_Color c= (Atr_Color) nuevas[i];
       c.col = s.p5.color(0,255,0);
     }
     return nuevas;

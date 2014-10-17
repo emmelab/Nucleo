@@ -1,24 +1,24 @@
 Mod_Mover mMover = new Mod_Mover();
 
 class Mod_Mover extends Modificador{
-  Posicion[] posiciones;
-  Velocidad[] velocidades;
+  Atr_Posicion[] posiciones;
+  Atr_Velocidad[] velocidades;
   
   Mod_Mover(){
     
   }
   
   void atributosObligatorios(Sistema sistema){
-    posiciones = (Posicion[])sistema.getAtributos(Posicion.key);
-    if (posiciones == null) posiciones = (Posicion[])sistema.incluir(new Posicion());
-    velocidades = (Velocidad[])sistema.getAtributos(Velocidad.key);
-    if (velocidades == null) velocidades = (Velocidad[])sistema.incluir(new Velocidad());
+    posiciones = (Atr_Posicion[])sistema.getAtributos(Atr_Posicion.key);
+    if (posiciones == null) posiciones = (Atr_Posicion[])sistema.incluir(new Atr_Posicion());
+    velocidades = (Atr_Velocidad[])sistema.getAtributos(Atr_Velocidad.key);
+    if (velocidades == null) velocidades = (Atr_Velocidad[])sistema.incluir(new Atr_Velocidad());
   }
   
   void ejecutar(Sistema sistema){
       for (int i=0; i<sistema.tamano; i++) {
-      Posicion p = posiciones[i];
-      Velocidad v = velocidades[i]; 
+      Atr_Posicion p = posiciones[i];
+      Atr_Velocidad v = velocidades[i]; 
       p.x += v.magnitud*cos(v.direccion);
       p.y += v.magnitud*sin(v.direccion);
     }
