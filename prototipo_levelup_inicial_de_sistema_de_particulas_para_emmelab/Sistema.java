@@ -2,46 +2,86 @@ import processing.core.PApplet;
 import java.util.HashMap;
 
 class Sistema {
-  ArrayList<Modificador> modificadores;
-  ArrayList<Boolean> estadoModificadores;
+    ArrayList<Modificador> modificadores= new ArrayList<Modificador>();
+    ArrayList<Boolean> estadoModificadores  = new ArrayList<Boolean>();
 
-  final PApplet p5;
-  int tamano = 100;
-  HashMap<String,Atributo[]> atributos;
+    final PApplet p5;
+    int tamano = 100;
+    HashMap<String,Atributo[]> atributos;
 
-  Sistema(PApplet p5, int cantidad) {
-    this.p5 = p5;
-    tamano = cantidad;
-    atributos = new HashMap();
-  }
-
-  Atributo[] incluir(Atributo semilla) {
-    if (atributos.containsKey( semilla.getKey() )) {
-      System.out.println("Esta llave ya está en uso"+semilla.getKey());
-      p5.exit();
-      return null;
+    Sistema(PApplet p5, int cantidad) {
+        this.p5 = p5;
+        tamano = cantidad;
+        atributos = new HashMap();
     }
-    else {
-      Atributo[] nuevas = semilla.generarGrupo(this);
-      atributos.put(semilla.getKey(),nuevas);
-      return nuevas;
+
+    void actualizar(){
+        for(int i = 0; i<modificadores.size();i++){
+            if (getEstadoModificador(i)){
+                getModificador(i).modificar(this);
+            }
+        }
     }
-  }
 
-  Atributo[] getAtributos(String llave) {
-    return atributos.get(llave);
-  }
+    Atributo[] incluir(Atributo semilla) {
+        if (atributos.containsKey( semilla.getKey() )) {
+            System.out.println("Esta llave ya está en uso"+semilla.getKey());
+            p5.exit();
+            return null;
+        }
+        else {
+            Atributo[] nuevas = semilla.generarGrupo(this);
+            atributos.put(semilla.getKey(),nuevas);
+            return nuevas;
+        }
+    }
 
-  void agregarModificador(Modificador modificador){
-    modificadores.add(modificador);
-  }
- void agregarModificador(Modificador modificador, int posicion){
-   modificadores.add(posicion, modificador);
- }
+    Atributo[] getAtributos(String llave) {
+        return atributos.get(llave);
+    }
 
- void eliminarModificador(int posicion){
-  modificadores.remove(posicion);
-}
+    Modificador getModificador(int posicion){
+        return modificadores.get(posicion);
+    }
 
+    void setEstadoModificador(int posicion, boolean estado){
+        estadoModificadores.set(posicion, estado);
+    }
 
+    void prenderModificador(int posicion){
+        estadoModificadores.set(posicion, true);
+    }
+
+    void apagarModificador(int posicion){
+        estadoModificadores.set(posicion, false);
+    }
+
+    boolean getEstadoModificador(int posicion){
+        return estadoModificadores.get(posicion);
+    }
+
+    void agregarModificador(Modificador modificador){
+        modificadores.add(modificador);
+        estadoModificadores.add(true);
+    }
+
+    void agregarModificador(Modificador modificador, boolean estado){
+        modificadores.add(modificador);
+        estadoModificadores.add(estado);
+    }
+
+    void agregarModificador(Modificador modificador, int posicion){
+        modificadores.add(posicion, modificador);
+        estadoModificadores.add(posicion, true);
+    }
+
+    void agregarModificador(Modificador modificador, int posicion, boolean estado){
+        modificadores.add(posicion, modificador);
+        estadoModificadores.add(posicion, estado);
+    }
+
+    void eliminarModificador(int posicion){
+        modificadores.remove(posicion);
+        estadoModificadores.remove(posicion);
+    }
 }
