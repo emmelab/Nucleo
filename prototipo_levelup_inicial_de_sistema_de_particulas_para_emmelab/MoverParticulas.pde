@@ -1,4 +1,5 @@
 void moverParticulas(Sistema sistema) {//Este vendria a ser un modificador
+
   Posicion[] posiciones = (Posicion[])sistema.getAtributos(Posicion.key);
   if (posiciones == null) posiciones = (Posicion[])sistema.incluir(new Posicion());
   Velocidad[] velocidades = (Velocidad[])sistema.getAtributos(Velocidad.key);
