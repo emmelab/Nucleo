@@ -2,6 +2,9 @@ import processing.core.PApplet;
 import java.util.HashMap;
 
 class Sistema {
+  ArrayList<Modificador> modificadores;
+  ArrayList<Boolean> estadoModificadores;
+  
   final PApplet p5;
   int tamano = 100;
   HashMap<String,Atributo[]> atributos;
@@ -28,4 +31,6 @@ class Sistema {
   Atributo[] getAtributos(String llave) {
     return atributos.get(llave);
   }
+  
+  
 }
