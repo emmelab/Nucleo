@@ -3,12 +3,14 @@ import java.util.HashMap;
 
 class Sistema {
   final PApplet p5;
-  int tamano = 100;
+  int cantidad = 100;
   HashMap<String,Atributo[]> atributos;
+  
+  //2 ArrayList Modificicador y Bool
   
   Sistema(PApplet p5, int cantidad) {
     this.p5 = p5;
-    tamano = cantidad;
+    this.cantidad = cantidad;
     atributos = new HashMap();
   }
   
