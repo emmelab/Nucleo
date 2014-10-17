@@ -1,10 +1,6 @@
 import processing.core.PApplet;
 import java.util.HashMap;
 
-interface Modificador {
-  void modificar(Sistema s);
-}
-
 class Sistema {
   final PApplet p5;
   int tamano = 100;
