@@ -4,19 +4,16 @@ void dibujarParticulas(Sistema sistema) {//Este vendria a ser un modificador
   Tamano[] tamanios = (Tamano[])sistema.getAtributos(Tamano.key);
   if (tamanios == null) tamanios = (Tamano[])sistema.incluir(new Tamano());
   //Color[] colores = sistema.getAtributos(Color.key);
-
-  for (int i=0; i<sistema.cantidad; i++) {
+  
+  for (int i=0; i<sistema.tamano; i++) {
     Posicion p = posiciones[i];
-    Tamano t = tamanios[i];
+    Tamano t = tamanios[i]; 
     //ESTO ES PARA EL FUTURO
     //Color c = colores[i];
     //if (colores != null) {
-    //fill(colores[i].color);
+      //fill(colores[i].color);
     //}
-    if (tamanios != null)
-      ellipse(p.x, p.y, t.diametro, t.diametro);
-    else
-      ellipse(p.x, p.y, 25, 25);
+    
+    ellipse(p.x,p.y,t.diametro,t.diametro);
   }
 }
-

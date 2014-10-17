@@ -7,14 +7,12 @@ interface Modificador {
 
 class Sistema {
   final PApplet p5;
-  int cantidad = 100;
+  int tamano = 100;
   HashMap<String,Atributo[]> atributos;
-  
-  //2 ArrayList Modificicador y Bool
   
   Sistema(PApplet p5, int cantidad) {
     this.p5 = p5;
-    this.cantidad = cantidad;
+    tamano = cantidad;
     atributos = new HashMap();
   }
   

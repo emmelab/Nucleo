@@ -5,7 +5,7 @@ abstract class Atributo {
   abstract String getKey();
   
   Atributo[] generarGrupo(Sistema s) {
-    Atributo[] nuevas = soloPonerNewArray(s.cantidad);
+    Atributo[] nuevas = soloPonerNewArray(s.tamano);
     nuevas[0] = this;
     for (int i=1; i<nuevas.length; i++) {
       nuevas[i] = soloPonerNewX();
