@@ -8,6 +8,6 @@ void setup() {
 void draw() {
   background(0);
   
-  moverParticulas(sistema);
-  dibujarParticulas(sistema);
+  mMover.modificar(sistema);
+  mDibujar.modificar(sistema);
 }
