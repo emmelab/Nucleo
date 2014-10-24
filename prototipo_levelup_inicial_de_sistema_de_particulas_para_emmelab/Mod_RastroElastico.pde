@@ -1,11 +1,11 @@
-Mod_Mover mRastroElastico = new Mod_RastroElastico();
+Mod_RastroElastico mRastroElastico = new Mod_RastroElastico();
 
 class Mod_RastroElastico extends Modificador {
   Atr_Rastro[] rastro;
   Atr_Velocidad[] velocidades;
   float factor[];
 
-  Mod_Mover() {
+  Mod_RastroElastico() {
   }
 
   void atributosObligatorios(Sistema sistema) {
@@ -25,12 +25,14 @@ class Mod_RastroElastico extends Modificador {
   void ejecutar(Sistema sistema) {
     if (velocidades != null) {
       for (int i=0; i<sistema.tamano; i++) {
-        factor[i] = velocidades[i]*0.1;
+        factor[i] = velocidades[i].magnitud*0.1;
       }
     }
 
-    for (int i = 1; i < sistema.tamano; i++) {
-      rastro[i].set(lerp(rastro[i].x, rastro[i-1].x, factor), lerp(rastro[i].y, rasatro[i-1].y, factor), 0);
+    for (int i = 0; i < sistema.tamano; i++) {
+      for (int j = 1; j < 10; j++) {
+        rastro[i].hijos[j].set(lerp(rastro[i].hijos[j].x, rastro[i].hijos[j-1].x, factor[i]), lerp(rastro[i].hijos[j].y, rastro[i].hijos[j-1].y, factor[i]), 0);
+      }
     }
   }
 }
