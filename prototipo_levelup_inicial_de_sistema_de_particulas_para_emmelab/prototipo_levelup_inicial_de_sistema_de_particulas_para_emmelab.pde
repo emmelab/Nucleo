@@ -5,6 +5,7 @@ void setup() {
   sistema = new Sistema(this,100);
   
   sistema.agregarModificador(mMover);
+  sistema.agregarModificador(mGravedad);
   sistema.agregarModificador(mDibujar);
 }
 
