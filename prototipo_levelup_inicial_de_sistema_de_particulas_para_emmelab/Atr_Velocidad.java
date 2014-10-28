@@ -15,8 +15,8 @@ class Atr_Velocidad extends Atributo {
   
   Atributo[] iniciar(Sistema s, Atributo[] nuevas) {
     for (Atr_Velocidad p : (Atr_Velocidad[])nuevas) {
-      p.direccion = s.p5.random(s.p5.TWO_PI);
-      p.magnitud = s.p5.random(.05f,1);
+      p.direccion = s.p5.random(s.p5.PI,s.p5.TWO_PI);
+      p.magnitud = s.p5.random(.05f,2);
     }
     return nuevas;
   }

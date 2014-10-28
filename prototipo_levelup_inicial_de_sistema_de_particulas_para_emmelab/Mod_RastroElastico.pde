@@ -31,7 +31,21 @@ class Mod_RastroElastico extends Modificador {
 
     for (int i = 0; i < sistema.tamano; i++) {
       for (int j = 1; j < 10; j++) {
-        rastro[i].hijos[j].set(lerp(rastro[i].hijos[j].x, rastro[i].hijos[j-1].x, factor[i]), lerp(rastro[i].hijos[j].y, rastro[i].hijos[j-1].y, factor[i]), 0);
+        //rastro[i].hijos[j].set(lerp(rastro[i].hijos[j].x, rastro[i].hijos[j-1].x, factor[i]), lerp(rastro[i].hijos[j].y, rastro[i].hijos[j-1].y, factor[i]), 0);
+        rastro[i].hijosx[j] = lerp(rastro[i].hijosx[j], rastro[i].hijosx[j-1], factor[i]);
+        rastro[i].hijosy[j] = lerp(rastro[i].hijosy[j], rastro[i].hijosy[j-1], factor[i]);
+      }
+    }
+
+    for (int i = 0; i < sistema.tamano; i++) {
+      for (int j = 1; j < 10; j++) {
+        pushStyle();
+        stroke(255);
+        triangle(rastro[i].hijosx[j], rastro[i].hijosy[j]-5, rastro[i].hijosx[j]+5, rastro[i].hijosy[j]+5, rastro[i].hijosx[j]-5, rastro[i].hijosy[j]+5);
+        popStyle();
+        //ellipse(rastro[i].hijosx[j], rastro[i].hijosy[j],5,5);
+        //triangle( rastro[i].hijos[j].x+5, rastro[i].hijos[j].y+5, rastro[i].hijos[j].x-5, rastro[i].hijos[j].y+5,rastro[i].hijos[j].x, rastro[i].hijos[j].y+5);
+        //ellipse(rastro[i].hijos[j].x, rastro[i].hijos[j].y,5,5);
       }
     }
   }
