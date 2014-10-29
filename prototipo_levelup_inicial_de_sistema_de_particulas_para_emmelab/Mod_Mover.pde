@@ -3,7 +3,6 @@ Mod_Mover mMover = new Mod_Mover();
 class Mod_Mover extends Modificador {
   Atr_Posicion[] posiciones;
   Atr_Velocidad[] velocidades;
-  PVector[] lasPosiciones;
 
   Mod_Mover() {
   }
@@ -16,18 +15,14 @@ class Mod_Mover extends Modificador {
   }
 
   void ejecutar(Sistema sistema) {
-    lasPosiciones = new PVector[sistema.tamano];
+
     for (int i=0; i<sistema.tamano; i++) {
       Atr_Posicion p = posiciones[i];      
       Atr_Velocidad v = velocidades[i]; 
-      float direccion = random(v.direccion-radians(90),v.direccion+radians(90));
+      float direccion = random(v.direccion-radians(90), v.direccion+radians(90));
       p.x += v.magnitud*cos(direccion);
       p.y += v.magnitud*sin(direccion);
-      lasPosiciones[i] = new PVector(p.x, p.y);
     }
   }
+}
 
-  PVector[] posiciones(Sistema sistema) {     
-    return  lasPosiciones;
-}
-}
