@@ -16,8 +16,8 @@ class Atr_Fuerza extends Atributo{
   
   Atributo[] iniciar(Sistema s, Atributo[] nuevas) {
     for (Atr_Fuerza f : (Atr_Fuerza[])nuevas) {
-      f.direccion = s.p5.HALF_PI;
-      f.magnitud = .05f;
+        f.direccion = 0;
+        f.magnitud = .0f;
     }
     return nuevas;
   }
