@@ -8,7 +8,7 @@ class Mod_EspacioCerrado extends Modificador{
   
   //con esta variable se setea cuanta "energia" NO se pierde, NO se absorbe, con el choque contra la pared
   //es decir si vale 1.0 no se pierde nada de energia, si vale 0.8 se pierde el 20%
-  float absorcionDelRebote = 0.9;
+  float absorcionDelRebote = 0.7;
   
   
   void atributosObligatorios(Sistema sistema){
@@ -75,7 +75,8 @@ class Mod_EspacioCerrado extends Modificador{
         }else if( p.x > width - tamano/2 ){
           p.x= width - tamano/2;
           componenteX *= -absorcionDelRebote;
-        }else if( p.y < 0 + tamano/2 ){
+        }
+        if( p.y < 0 + tamano/2 ){
           p.y = 0 + tamano/2;
           componenteY *= -absorcionDelRebote;
         }else if( p.y > height - tamano/2 ){

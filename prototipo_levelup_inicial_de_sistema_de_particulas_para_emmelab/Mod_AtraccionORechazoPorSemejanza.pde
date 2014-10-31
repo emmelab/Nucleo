@@ -37,8 +37,7 @@ class Mod_AtraccionORechazoPorSemejanza extends Modificador{
       Atr_Posicion p=posiciones[i];
       Atr_Color c=colores[i];
       Atr_Fuerza f=fuerzas[i];
-      PVector[] vector=new PVector[sistema.tamano];
-      vector[i]=new PVector(0,0);
+      PVector vector=new PVector();
       
       for(int j=0;j<sistema.tamano;j++){
         if(i!=j){
@@ -51,24 +50,19 @@ class Mod_AtraccionORechazoPorSemejanza extends Modificador{
           if(pj.x - p.x < 0) angulo += PI;
           
           if( c.col == cj.col){
-            vector[j] = PVector.fromAngle(angulo);
+            vector.add(PVector.fromAngle(angulo)); 
           }else{
-            vector[j] = PVector.fromAngle(angulo+PI);
+            vector.add(PVector.fromAngle(angulo+PI));
           }
           
         }
       }
       
-      PVector vectorSuma=new PVector();
-      for(int j=0;j<sistema.tamano;j++){
-        vectorSuma.add(vector[j]);
-      }
-      //vectorSuma.normalize();
+      float direccionVector = atan( vector.y / vector.x );
+      if( vector.x < 0 ) direccionVector += PI;
       
-      float direccionVectorSuma = atan( vectorSuma.y / vectorSuma.x );
-      if( vectorSuma.x < 0 ) direccionVectorSuma += PI;
-      
-      f.direccion = ( Float.isNaN(direccionVectorSuma) ) ? 0 : direccionVectorSuma;
+      f.direccion = ( Float.isNaN(direccionVector) ) ? 0 : direccionVector;
+      //println(direccionVector);
       f.magnitud=0.01;
       
       /* aca esta lo de la velocidad xD
