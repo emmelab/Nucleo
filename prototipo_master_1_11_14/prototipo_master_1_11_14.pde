@@ -12,21 +12,20 @@ void setup() {
   noSmooth();
   noStroke();
 
-  //sistema.agregarModificador(mGravedad);
-  //sistema.agregarModificador(mFuerzasPorSemejanza);
-  //sistema.agregarModificador(mAtraccionAlCentro);
+  sistema.agregarModificador(mGravedad);
+  sistema.agregarModificador(mFuerzasPorSemejanza);
+  sistema.agregarModificador(mAtraccionAlCentro);
   sistema.agregarModificador(mAplicarFuerza);
   sistema.agregarModificador(mEspacioCerrado);
-  sistema.agregarModificador(mPozo);
 
   posModificadorMover = sistema.modificadores.size();
   sistema.agregarModificador(mMover);
   sistema.agregarModificador(mColisionParticulasSimple);
 
-  //sistema.agregarModificador(mRastroElastico);
+  sistema.agregarModificador(mRastroElastico);
   sistema.agregarModificador(mDibujar);
 
-  //sistema.agregarModificador(mActualizarRastro);
+  sistema.agregarModificador(mActualizarRastro);
 }
 
 void reset() {
