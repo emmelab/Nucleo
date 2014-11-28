@@ -78,4 +78,3 @@ void keyPressed() {
   else if (key == 'm') switchMover();
   else if (key == 'd') sistema.debug = !sistema.debug;
 }
-
