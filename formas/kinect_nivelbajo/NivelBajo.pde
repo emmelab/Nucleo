@@ -1,10 +1,10 @@
 class NivelBajo {
-  PVector piso;
+  float piso;
   boolean activo, entra, sale;
   int umbral;
 
   NivelBajo(int _umbral) {
-    piso = new PVector();
+    piso = 0;
     activo = false;
     umbral = _umbral;
   }
@@ -17,25 +17,20 @@ class NivelBajo {
       PVector pos = joints.get(tipoJoint);
       context.getJointPositionSkeleton(user, tipoJoint, pos);
 
-      PVector pos2d = new PVector();
-      context.convertRealWorldToProjective(pos, pos2d);
-
-      if (pos2d.y > piso.y) {
-        piso.set(pos2d);
+      if (pos.y > piso) {
+        piso = pos.y;
       }
     }
 
     PVector cabeza = joints.get(SimpleOpenNI.SKEL_HEAD); 
-    PVector cabeza2d = new PVector();
-    context.convertRealWorldToProjective(cabeza, cabeza2d);
 
     if (!activo) {
-      if (cabeza2d.dist(piso) < umbral) {
+      if (piso - cabeza.y < umbral) {
         activo = true;
         entra = true;
       }
     } else {
-      if (cabeza2d.dist(piso) > umbral) {
+      if (piso - cabeza.y > umbral) {
         activo = false;
         sale = true;
       }
@@ -52,4 +47,3 @@ class NivelBajo {
     return sale;
   }
 }
-
